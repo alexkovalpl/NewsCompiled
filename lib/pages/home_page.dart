@@ -89,9 +89,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future search(query) async {
-    articles = await client.query(query);
+    client.query = query;
+    List<Article> articlesFound = await client.getArticle();
     setState(() {
-      articles = articles;
+      articles = articlesFound;
     });
   }
   }
